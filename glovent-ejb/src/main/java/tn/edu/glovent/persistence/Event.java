@@ -51,7 +51,9 @@ public class Event implements Serializable {
 	@OneToOne
 	private RegistrationForm MyRegistrationForm;
 	
-	
+	//sourour
+		@OneToOne(mappedBy="MyEvent")
+		private Survey MySurvey;
 	
 	
 	public Event() {
@@ -118,6 +120,42 @@ public class Event implements Serializable {
 	public String toString() {
 		return "Event [idEvent=" + idEvent + ", localisation=" + localisation + ", avaibility=" + avaibility
 				+ ", dateEvent=" + dateEvent + ", theme=" + theme + ", nameEvent=" + nameEvent + "]";
+	}
+	public List<Task> getTasks() {
+		return Tasks;
+	}
+	public void setTasks(List<Task> tasks) {
+		Tasks = tasks;
+	}
+	public Organization getMyOrganization() {
+		return MyOrganization;
+	}
+	public void setMyOrganization(Organization myOrganization) {
+		MyOrganization = myOrganization;
+	}
+	public Category getMyCategory() {
+		return MyCategory;
+	}
+	public void setMyCategory(Category myCategory) {
+		MyCategory = myCategory;
+	}
+	public List<Ticket> getMyTickets() {
+		return MyTickets;
+	}
+	public void setMyTickets(List<Ticket> myTickets) {
+		MyTickets = myTickets;
+	}
+	public RegistrationForm getMyRegistrationForm() {
+		return MyRegistrationForm;
+	}
+	public void setMyRegistrationForm(RegistrationForm myRegistrationForm) {
+		MyRegistrationForm = myRegistrationForm;
+	}
+	public Survey getMySurvey() {
+		return MySurvey;
+	}
+	public void setMySurvey(Survey mySurvey) {
+		MySurvey = mySurvey;
 	}
 	
 	
