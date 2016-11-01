@@ -1,5 +1,7 @@
 package tn.edu.glovent.service;
 
+
+
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,6 @@ public interface EventServicesRemote {
 	Event searchEventById(int id);
 	Organization searchOrganizationById(int id);
 	List<Organization> searchOrganizationByName(String name);
-	List<RegistrationForm> listAll();
+	
 	
 }

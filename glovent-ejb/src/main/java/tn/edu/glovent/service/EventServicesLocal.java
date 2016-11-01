@@ -44,20 +44,61 @@ public interface EventServicesLocal {
 	 */
 	boolean checkAvailibility(int id);
 	/**
-	 * this method return the list of 
+	 * this method return the list of event by a given date
 	 * @param date
 	 * @return
 	 */
 	List<Event> getEventByDate(Date date);
+	/**
+	 * this method return an event in a given period
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	List<Event> getEventByPeriod(Date startDate, Date endDate);
+	/**
+	 * this method return list of events by a given name
+	 * @param nameE
+	 * @return
+	 */
 	List<Event> searchByNameEvent(String nameE);
+	/**
+	 * this method return an list of events by organization id
+	 * @param id
+	 * @return
+	 */
 	List<Event> findEventByOrganization(int id);
+	/**
+	 * this method return an list of events by organization name
+	 * @param nameOrg
+	 * @return
+	 */
 	List<Event> findEventByNameOrganization(String nameOrg);
+	/**
+	 * 
+	 * @param event
+	 * @return
+	 */
 	int NumberParticipant(Event event);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	Event searchEventById(int id);
+	/**
+	 * this method return an organization by id
+	 * @param id
+	 * @return
+	 */
 	Organization searchOrganizationById(int id);
+	/**
+	 * this method return a list organizations by a given name
+	 * @param name
+	 * @return
+	 */
 	List<Organization> searchOrganizationByName(String name);
-	List<RegistrationForm> listAll();
+	
 	
 	
 }
