@@ -33,11 +33,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@OneToMany(mappedBy = "MyRf", cascade = CascadeType.ALL)
 	private List<Field> MyFields = new ArrayList<Field>();
 	
-	
-	
-	
-	
-
 	public RegistrationForm() {
 		super();
 	}
