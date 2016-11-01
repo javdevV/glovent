@@ -21,7 +21,9 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
+import tn.edu.glovent.persistence.Event;
 import tn.edu.glovent.persistence.User;
+import tn.edu.glovent.service.EventServicesLocal;
 import tn.edu.glovent.service.UserServicesLocal;
 
 @Path("/user")
@@ -33,6 +35,8 @@ public class UsersRessource {
 	UserServicesLocal metier;
 	
 	
+	@EJB
+	EventServicesLocal metier1;
 	 
 	
 
@@ -70,15 +74,15 @@ public class UsersRessource {
 	@PUT
 	@Path("/accountstate")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response ChangeAccountState(@QueryParam("state") int state,User user ) {
-		if(state == 0){
+	public Response ChangeAccountState(@QueryParam("state") boolean state,User user ) {
+		if(state = false){
 			metier.activateAccount(user.getIdUser());
-			return Response.status(Status.ACCEPTED).entity("account disabled").build();
+			return Response.status(Status.ACCEPTED).entity("account activated").build();
 		}
-		else if(state == 1){
+		else if(state = true){
 			metier.disableAccount(user.getIdUser());
-			return Response.status(Status.ACCEPTED).entity("account activated").build();	
-		}else{
+			return Response.status(Status.ACCEPTED).entity("account disabled").build();	
+		}else {
 			return Response.status(Status.NOT_FOUND).entity("User account not found").build();
 		}
 	}
@@ -195,6 +199,26 @@ public class UsersRessource {
 		else
 			return Response.ok("Successful").build();
 	}
+	
+	
+	
+	
+	
+	
+	@PUT
+	@Path("/participate/{ide}/{idu}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response ParticipateToEvent(@PathParam("ide")Integer ide,@PathParam("idu")Integer idu){
+		
+		User user=metier.searchUserById(idu);
+		Event event=metier1.searchEventById(ide);
+		List<User> usrs=new ArrayList<>();
+		event.setListeP(usrs);
+		metier.participatEvent(event, user);
+		return Response.status(Status.ACCEPTED).entity("User is participating to the event").build();
+	}
+	
+	
 	
 	
 	

@@ -221,12 +221,7 @@ return em.createQuery("select e from Event e ", Event.class)
 	
 	
 	
-	@Override
-	public List<RegistrationForm> listAll() {
-return em.createQuery("select e from RegistrationForm e ", RegistrationForm.class)
-				
-				.getResultList();
-	}
+	
 	
 	
 	
