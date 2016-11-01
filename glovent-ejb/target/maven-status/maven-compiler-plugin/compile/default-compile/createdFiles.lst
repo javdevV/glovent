@@ -18,6 +18,9 @@ tn\edu\glovent\persistence\Complaint.class
 tn\edu\glovent\persistence\FieldCategory.class
 tn\edu\glovent\persistence\Participant.class
 tn\edu\glovent\persistence\Answer.class
+tn\edu\glovent\service\ForumService.class
+tn\edu\glovent\persistence\Forum.class
+tn\edu\glovent\persistence\Thread.class
 tn\edu\glovent\service\RegistrationFormServiceRemote.class
 tn\edu\glovent\service\UserServices.class
 tn\edu\glovent\persistence\AnswerId.class
@@ -30,6 +33,7 @@ tn\edu\glovent\service\RegistrationFormService.class
 tn\edu\glovent\service\SurveyService.class
 tn\edu\glovent\persistence\Event.class
 tn\edu\glovent\persistence\President.class
+tn\edu\glovent\service\ThreadService.class
 tn\edu\glovent\persistence\Survey.class
 tn\edu\glovent\service\SurveyInterface.class
 tn\edu\glovent\service\FieldServiceRemote.class
