@@ -56,11 +56,6 @@ public class User implements Serializable {
 	private List<Answer> myAnswers;
 	
 	
-	
-	
-	
-	
-	
 	public User() {
 		super();
 	}
