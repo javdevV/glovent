@@ -1,20 +1,30 @@
 package tn.edu.glovent.persistence;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="Events")
-public class Event {
-    @Id
+
+public class Event implements Serializable {
+
+	
+	
+	private static final long serialVersionUID = 1L;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
 	private int idEvent;
 	private String localisation;
 	private boolean avaibility;
@@ -22,6 +32,7 @@ public class Event {
 	private String theme;
 	private String nameEvent;
 	@ManyToMany
+	
 	private List<User> listeP;
 	
 	@OneToMany(mappedBy="MyEvent")
@@ -75,6 +86,9 @@ public class Event {
 	public void setAvaibility(boolean avaibility) {
 		this.avaibility = avaibility;
 	}
+	public boolean getAvaibility() {
+	return avaibility ;
+	}
 	public Date getDateEvent() {
 		return dateEvent;
 	}
@@ -93,18 +107,17 @@ public class Event {
 	public void setNameEvent(String nameEvent) {
 		this.nameEvent = nameEvent;
 	}
+	@JsonIgnore
 	public List<User> getListeP() {
 		return listeP;
 	}
 	public void setListeP(List<User> listeP) {
 		this.listeP = listeP;
 	}
-	
 	@Override
 	public String toString() {
 		return "Event [idEvent=" + idEvent + ", localisation=" + localisation + ", avaibility=" + avaibility
-				+ ", dateEvent=" + dateEvent + ", theme=" + theme + ", nameEvent=" + nameEvent + ", listeP=" + listeP
-				+ "]";
+				+ ", dateEvent=" + dateEvent + ", theme=" + theme + ", nameEvent=" + nameEvent + "]";
 	}
 	
 	

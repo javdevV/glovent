@@ -6,17 +6,22 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-    @Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
 	private int idUser;
 	private String fName;
 	private String lName;
@@ -27,6 +32,7 @@ public class User implements Serializable {
 	private int age;
 	private String adress;
 	private String image;
+
 	private boolean AccountState;
 	@ManyToMany(mappedBy="listeP")
 	private List<Event> listeE ;
@@ -124,12 +130,13 @@ public class User implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public boolean isAccountState() {
+	public boolean getAccountState() {
 		return AccountState;
 	}
 	public void setAccountState(boolean accountState) {
-		AccountState = accountState;
+		this.AccountState = accountState;
 	}
+	@JsonIgnore
 	public List<Event> getListeE() {
 		return listeE;
 	}
@@ -140,7 +147,7 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [fName=" + fName + ", lName=" + lName + ", login=" + login + ", pwd=" + pwd + ", email=" + email
 				+ ", age=" + age + ", adress=" + adress + ", image=" + image + ", AccountState=" + AccountState
-				+ ", listeE=" + listeE + "]";
+				+ ",]";
 	}
 	
 	

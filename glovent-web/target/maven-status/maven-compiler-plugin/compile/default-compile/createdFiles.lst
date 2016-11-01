@@ -1,3 +1,5 @@
-tn\edu\glovent\ressources\JaxRsActivator.class
+tn\edu\glovent\ressources\EventRessource.class
 tn\edu\glovent\ressources\FieldRessource.class
+tn\edu\glovent\ressources\UsersRessource.class
+tn\edu\glovent\ressources\JaxRsActivator.class
 tn\edu\glovent\ressources\RegistrationFormRessource.class

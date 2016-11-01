@@ -1,9 +1,12 @@
 package tn.edu.glovent.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -12,13 +15,18 @@ import javax.persistence.TypedQuery;
 import tn.edu.glovent.persistence.Event;
 import tn.edu.glovent.persistence.User;
 
-public class UserService implements UserInterface {
+/**
+ * Session Bean implementation class UserServices
+ */
+@Stateless
+@LocalBean
+public class UserServices implements UserServicesRemote, UserServicesLocal {
 	@PersistenceContext
 	private EntityManager em;
 	@Override
 	public User authentification(String login, String password) {
 		User found = null;
-		String jpql ="select u from Users u where u.login = :l and u.pwd = :p";
+		String jpql ="select u from User u where u.login = :l and u.pwd = :p";
 		
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
 		query.setParameter("l", login);
@@ -29,7 +37,9 @@ public class UserService implements UserInterface {
 			Logger.getLogger(getClass().getName())
 			.log(Level.INFO, "no user with this login"+login);
 		}
+		
 		return found;
+		
 	}
 	@Override
 	public void Registration(User u) {
@@ -55,17 +65,17 @@ public class UserService implements UserInterface {
 	}
 
 	@Override
-	public void disableAccount(User u) {
-		User us = searchUserById(u.getIdUser());
-		u.setAccountState(false);
+	public void disableAccount(int id) {
+		User us = searchUserById(id);
+		us.setAccountState(false);
 		em.merge(us);
 		
 	}
 
 	@Override
-	public void activateAccount(User u) {
-		User us = searchUserById(u.getIdUser());
-		u.setAccountState(true);
+	public void activateAccount(int id) {
+		User us = searchUserById(id);
+		us.setAccountState(true);
 		em.merge(us);
 		
 	}
@@ -79,13 +89,7 @@ public class UserService implements UserInterface {
 		e.getListeP().add(u);
 		
 	}
-	@Override
-	public List<Event> searchByNameEvent(String nameE) {
-		
-		return em.createQuery("select e from Event e where e.availability = true AND e.nameEvent = :en ", Event.class)
-				.setParameter("en",nameE)
-				.getResultList();
-	}
+	
 	@Override
 	public List<Event> consultParticipatedEvent(User u) {
 		return u.getListeE();
@@ -93,9 +97,39 @@ public class UserService implements UserInterface {
 		
 		
 	}
+	@Override
+	public List<User> getAllUsers() {
 
 
+return em.createQuery("from User", User.class).getResultList();
 
+	}
+	@Override
+	public List<User> searchUserByName(String name) {
 	
+			return em
+					.createQuery("select u from User u where u.fName = :fn OR u.lName = :ln", User.class)
+					.setParameter("fn",name)
+					.setParameter("ln",name)
+					.getResultList();
+		}
+	@Override
+	public User searchUserByEmail(String email) {
+		return em
+				.createQuery("select u from User u where u.email = :email", User.class)
+				.setParameter("email",email)	
+				.getSingleResult();
+	}
+	@Override
+	public List<User> getUserByAge(int age) {
+		return em
+				.createQuery("select u from User u where u.age = :ag", User.class)
+				.setParameter("ag",age)
+				
+				.getResultList();
+	}
+
 
 }
+
+
