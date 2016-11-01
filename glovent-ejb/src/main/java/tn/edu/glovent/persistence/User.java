@@ -65,7 +65,7 @@ public class User implements Serializable {
 		super();
 	}
 	public User(int idUser, String fName, String lName, String login, String pwd, String asociation, String email,
-			int age, String adress, String image, boolean accountState, List<Event> listeE) {
+			int age, String adress, String image, boolean AccountState, List<Event> listeE) {
 		super();
 		this.idUser = idUser;
 		this.fName = fName;
@@ -77,7 +77,7 @@ public class User implements Serializable {
 		this.age = age;
 		this.adress = adress;
 		this.image = image;
-		AccountState = accountState;
+		AccountState = AccountState;
 		this.listeE = listeE;
 	}
 	public int getIdUser() {
@@ -138,8 +138,8 @@ public class User implements Serializable {
 	public boolean getAccountState() {
 		return AccountState;
 	}
-	public void setAccountState(boolean accountState) {
-		this.AccountState = accountState;
+	public void setAccountState(boolean AccountState) {
+		this.AccountState = AccountState;
 	}
 	@JsonIgnore
 	public List<Event> getListeE() {

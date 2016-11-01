@@ -37,7 +37,7 @@ public class RegistrationFormRessource {
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		regf.addRegistrationForm(rf);
 		builder.path(Integer.toString(rf.getId()));
-		return Response.created(builder.build()).entity(rf.getTitle()).build();
+		return Response.status(Status.ACCEPTED).entity("Registration form  successfully created").build();
 	}
 	@PUT
 	@Path("modify")

@@ -86,9 +86,20 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 	}
 	@Override
 	public void participatEvent(Event e, User u) {
+		
+		//List<User> lst=new ArrayList<>();
 		e.getListeP().add(u);
 		
-	}
+		em.merge(e);
+		
+//		for(Commentaire c:listCommentaires){
+//			Bugs b=this.findById(numBug);
+//			c.setMybug(b);
+//b.setComments(listCommentaires);			
+		}
+		
+		
+	
 	
 	@Override
 	public List<Event> consultParticipatedEvent(User u) {

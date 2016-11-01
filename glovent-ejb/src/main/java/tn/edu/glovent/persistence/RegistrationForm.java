@@ -26,11 +26,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne(mappedBy = "MyRegistrationForm")
+	@OneToOne(mappedBy = "MyRegistrationForm",fetch=FetchType.LAZY)
 	private Event MyEvent;
 	 
 
-	@OneToMany(mappedBy = "MyRf", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "MyRf", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Field> MyFields = new ArrayList<Field>();
 	
 	public RegistrationForm() {
@@ -77,8 +77,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 	@Override
 	public String toString() {
-		return "RegistrationForm [id=" 	+ id + ", title=" + title + ", MyEvent=" + MyEvent + ", MyFields=" + MyFields
-				+ "]";
+		return "RegistrationForm [id=" 	+ id + ", title=" + title + "]";
 	}
 
 }

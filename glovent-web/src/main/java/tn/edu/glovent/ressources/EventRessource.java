@@ -81,11 +81,11 @@ return Response.ok(metier.listAvailableEvents()).build();
 	
 	
 	@GET
-	@Path("/sear") 
+	@Path("/searchall") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listAvailableeEvents(){
+	public Response listAllEvents(){
 		
-	return Response.ok(metier.listAll()).build();
+	return Response.ok(metier.listAllEvents()).build();
 	
 	}	
 	
@@ -274,7 +274,7 @@ return Response.ok(metier.listAvailableEvents()).build();
 		@GET
 		@Path("/searchorganizationbyname/{nameO}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response searchByNameOrganization(@PathParam("nameO" )String nameO ){
+		public Response searchOrganizationbyname(@PathParam("nameO" )String nameO ){
 			List<Organization> orgs = metier.searchOrganizationByName(nameO);
 			if(!orgs.isEmpty()){
 				return Response.ok(orgs).build();

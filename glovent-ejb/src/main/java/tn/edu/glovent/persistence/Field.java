@@ -67,7 +67,7 @@ public class Field implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Field [id=" + id + ", label=" + label + ", type=" + type + ", MyRf=" + MyRf + "]";
+		return "Field [id=" + id + ", label=" + label + ", type=" + type +    "]";
 	}
 	 
 }
