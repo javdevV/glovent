@@ -68,6 +68,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		MyFields = myFields;
 	}
 
+	
+	
 	public void addFieldToForm(List<Field> listeFields) {
 		for (Field x : listeFields) {
 			x.setMyRegistrationField(this);
