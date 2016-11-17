@@ -54,7 +54,8 @@ public class User implements Serializable {
 	 @JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Answer> myAnswers;
-	
+	//yosra
+	 
 	
 	public User() {
 		super();

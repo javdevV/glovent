@@ -25,6 +25,7 @@ public interface UserServicesLocal {
 	User searchUserByEmail(String email);
 	List<User> getUserByAge(int age);
 
+
 	
 	
 	

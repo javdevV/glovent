@@ -25,4 +25,5 @@ public interface UserServicesRemote {
 	User searchUserByEmail(String email);
 	List<User> getUserByAge(int age);
 
+
 }

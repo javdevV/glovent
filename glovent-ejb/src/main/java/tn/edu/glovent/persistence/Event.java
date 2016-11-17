@@ -43,10 +43,10 @@ public class Event implements Serializable {
 	
 	@ManyToOne
 	private Category MyCategory;
-	
-	@OneToMany(mappedBy="MyEvent")
+	//yosra
+	@OneToMany(mappedBy="event")
 	private List<Ticket> MyTickets;
-	
+	private Chalange chalange;
 	
 	@OneToOne
 	private RegistrationForm MyRegistrationForm;
@@ -156,6 +156,12 @@ public class Event implements Serializable {
 	}
 	public void setMySurvey(Survey mySurvey) {
 		MySurvey = mySurvey;
+	}
+	public Chalange getChalange() {
+		return chalange;
+	}
+	public void setChalange(Chalange chalange) {
+		this.chalange = chalange;
 	}
 	
 	

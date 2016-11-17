@@ -1,6 +1,8 @@
 package tn.edu.glovent.persistence;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -21,7 +23,11 @@ public class Video implements Serializable {
     @ManyToOne
     private Galerie galerie;
     @ManyToOne
-    private User user;
+    private Participant MyPatricipant;
+    private int aime;
+    private int danger;
+    @OneToMany(mappedBy="vid")
+    private List<LikeVideo> likes;
 	public String getName() {
 		return name;
 	}
@@ -55,13 +61,13 @@ public class Video implements Serializable {
 	public void setGalerie(Galerie galerie) {
 		this.galerie = galerie;
 	}
-	@XmlTransient
-	public User getUser() {
-		return user;
+	public Participant getMyPatricipant() {
+		return MyPatricipant;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setMyPatricipant(Participant myPatricipant) {
+		MyPatricipant = myPatricipant;
 	}
+
 	
    
 }

@@ -40,9 +40,7 @@ public class EventServices implements EventServicesRemote, EventServicesLocal {
 
 	@Override
 	public List<Event> listAllEvents() {
-return em.createQuery("select e from Event e ", Event.class)
-				
-				.getResultList();
+return em.createQuery("select e from Event e ", Event.class).getResultList();
 	}
 
 	

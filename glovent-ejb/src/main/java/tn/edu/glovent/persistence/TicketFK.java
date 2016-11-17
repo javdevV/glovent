@@ -49,6 +49,22 @@ public class TicketFK implements Serializable {
 		if (idUser != other.idUser)
 			return false;
 		return true;
+	}
+
+	public int getIdEvent() {
+		return idEvent;
+	}
+
+	public void setIdEvent(int idEvent) {
+		this.idEvent = idEvent;
+	}
+
+	public int getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}   
 	
 	

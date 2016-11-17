@@ -1,6 +1,8 @@
 tn\edu\glovent\ressources\QuestionResource.class
 tn\edu\glovent\ressources\FieldRessource.class
+tn\edu\glovent\ressources\ForumResource.class
 tn\edu\glovent\ressources\RegistrationFormRessource.class
+tn\edu\glovent\ressources\ThreadResource.class
 tn\edu\glovent\ressources\EventRessource.class
 tn\edu\glovent\ressources\AnswerResource.class
 tn\edu\glovent\ressources\UsersRessource.class

@@ -2,28 +2,9 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="Glovent-ejb">
 		<jta-data-source>java:/gloventds</jta-data-source>
-		<class>tn.edu.glovent.persistence.Answer</class>
-		<class>tn.edu.glovent.persistence.AnswerId</class>
-		<class>tn.edu.glovent.persistence.Category</class>
-		<class>tn.edu.glovent.persistence.Choice</class>
-		<class>tn.edu.glovent.persistence.Complaint</class>
-		<class>tn.edu.glovent.persistence.Event</class>
-		<class>tn.edu.glovent.persistence.Field</class>
-		<class>tn.edu.glovent.persistence.Forum</class>
-		<class>tn.edu.glovent.persistence.Organization</class>
-		<class>tn.edu.glovent.persistence.Organizer</class>
-		<class>tn.edu.glovent.persistence.Participant</class>
-		<class>tn.edu.glovent.persistence.Poll</class>
-		<class>tn.edu.glovent.persistence.President</class>
-		<class>tn.edu.glovent.persistence.Question</class>
-		<class>tn.edu.glovent.persistence.RegistrationForm</class>
-		<class>tn.edu.glovent.persistence.Survey</class>
-		<class>tn.edu.glovent.persistence.Task</class>
-		<class>tn.edu.glovent.persistence.Thread</class>
-		<class>tn.edu.glovent.persistence.Ticket</class>
-		<class>tn.edu.glovent.persistence.User</class>
+		
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -9,47 +9,72 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Ticket implements Serializable {
-
-	   
-	@Id
-	private int id;
-	private float price;
-	private float discount;
+public class Ticket implements Serializable {	
+	@EmbeddedId
+	private TicketFK ticketfk;
+	private double prix;
+	private int discount;
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	private Participant MyPatricipant;
+	@JoinColumn(name="idEvent",referencedColumnName="idEvent",insertable=false,updatable=false)
+	 Event event;
 	
 	@ManyToOne
-	private Event MyEvent;
+	@JoinColumn(name="idUser",referencedColumnName="idUser",insertable=false,updatable=false)
+	 User participant;
+	public TicketFK getTicketfk() {
+		return ticketfk;
+	}
 	
-	
-	
-
 	public Ticket() {
 		super();
 	}   
-	public int getId() {
-		return this.id;
+	 
+	public double getPrix() {
+		return this.prix;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}   
-	public float getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}   
-	public float getDiscount() {
+	public int getDiscount() {
 		return this.discount;
 	}
 
-	public void setDiscount(float discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+
+
+
+	public User getParticipant() {
+		return participant;
+	}
+
+
+
+
+	public void setParticipant(User participant) {
+		this.participant = participant;
+	}
+
+
+
+
+	public void setTicketfk(TicketFK ticketfk) {
+		this.ticketfk = ticketfk;
+	}
+
+	
    
 }

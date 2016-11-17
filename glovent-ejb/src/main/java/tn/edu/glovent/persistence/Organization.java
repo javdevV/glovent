@@ -16,6 +16,7 @@ public class Organization implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String type;
@@ -29,6 +30,7 @@ public class Organization implements Serializable {
 	@OneToOne(mappedBy="MyOrganization")
 	private President MyPresident;
 	
+
 	
 	@OneToMany(mappedBy="MyOrganization")
 	private List<Event> MyEvents;
