@@ -49,7 +49,6 @@ public class AnswerService implements AnswerInterface {
 	public Answer findAnswerById(int idq,int idu) {
 		AnswerId idc= new AnswerId(idu,idq);
 		return em.find(Answer.class, idc);
-
 	}
 
 	@Override
@@ -66,5 +65,4 @@ public class AnswerService implements AnswerInterface {
 				.getResultList().size(); 
 		
 	}
-
 }
