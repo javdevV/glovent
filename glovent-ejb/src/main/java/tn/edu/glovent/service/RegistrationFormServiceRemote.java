@@ -20,9 +20,14 @@ public interface RegistrationFormServiceRemote {
 	public void updateRegistrationForm(RegistrationForm rf);
 	
 	/**
-	 * this method removes a RegistrationForm
+	 * this method removes a RegistrationForm by id 
 	 */
 	public void deleteRegistrationForm(int id );
+	/**
+	 * this method removes a RegistrationForm by object  
+	 * @param rf
+	 */
+	public void deleteEntireRegistrationForm(RegistrationForm rf ) ;
 	
 	/**
 	 * this methode clear all RegistrationForms
@@ -39,6 +44,8 @@ public interface RegistrationFormServiceRemote {
 	public List<RegistrationForm>getAllRegForm();
 	
 	public List<RegistrationForm>getRegFormbyName(String name);
+
+	public void updateOneRegistrationForm(int id);
 	
 	
 	

@@ -31,29 +31,45 @@ public class RegistrationFormRessource {
 	RegistrationFormServiceRemote regf;
 	
 	@POST
-	@Path("addrf")
+	//@Path("addrf")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createRf(RegistrationForm rf, @Context UriInfo uriInfo){
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		regf.addRegistrationForm(rf);
 		builder.path(Integer.toString(rf.getId()));
-		return Response.status(Status.ACCEPTED).entity("Registration form  successfully created").build();
+		return Response.status(Status.OK).build();
 	}
 	@PUT
-	@Path("modify")
-	@Produces(MediaType.APPLICATION_JSON)
+//	@Path("modify")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateRegistrationForm(RegistrationForm rf){
 		regf.updateRegistrationForm(rf);
-		return Response.status(Status.ACCEPTED).entity("Registration form  successfully Updated").build();
+		return Response.status(Status.ACCEPTED).build();
+	}
+	
+	@PUT
+	@Path("{id}")
+//	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateOneRegistrationForm(@PathParam("id")int id){
+		regf.updateOneRegistrationForm(  id);
+		return Response.status(Status.ACCEPTED).build();
 	}
 	@DELETE
 	@Path("{id}")
+	@Produces("text/plain")
 	public Response deleteRegistrationForm(@PathParam("id")int id ){
 		regf.deleteRegistrationForm(id);
 		return Response.status(Status.NO_CONTENT).entity("Registration Form Successfully deleted ").build();
 	}
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteEntireRegistrationForm(RegistrationForm r){
+		regf.deleteEntireRegistrationForm(r);
+		return Response.status(Status.NO_CONTENT).entity("Registration Form Successfully deleted ").build();
+	}
+	
 	@GET
-	@Path("getall")
+	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllRegForm(){
 		return Response.ok(regf.getAllRegForm()).build();
@@ -61,7 +77,7 @@ public class RegistrationFormRessource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("getbyint/{id}")
+	@Path("{id}")
 	public RegistrationForm getRegFormById(@PathParam("id") int id){
 		return regf.getRegFormById(id);
 	}	

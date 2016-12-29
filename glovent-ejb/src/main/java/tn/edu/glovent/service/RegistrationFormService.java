@@ -43,6 +43,13 @@ public class RegistrationFormService implements RegistrationFormServiceRemote {
 		RegistrationForm r = em.find(RegistrationForm.class, id);
 		em.remove(r);
 	}
+	@Override
+	public void deleteEntireRegistrationForm(RegistrationForm rf ) {
+		//RegistrationForm r = em.find(RegistrationForm.class, rf.id);
+		em.remove(rf);
+	}
+	
+	
 
 	@Override
 	public void clearRegistrationForm() {
@@ -67,6 +74,13 @@ public class RegistrationFormService implements RegistrationFormServiceRemote {
 	public List<RegistrationForm> getRegFormbyName(String name) {
 		return em.createQuery("SELECT r FROM RegistrationForm r WHERE r.title=:na",RegistrationForm.class)
 				.setParameter("na", name).getResultList();
+	}
+
+	@Override
+	public void updateOneRegistrationForm(int id) {
+		RegistrationForm r = em.find(RegistrationForm.class, id);
+		em.merge(r);
+		
 	}
 	
 	
